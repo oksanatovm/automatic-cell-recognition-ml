@@ -27,7 +27,7 @@ def iou(y_true,y_pred):
 	return tf.numpy_function(f,[y_true,y_pred],tf.float32)
 
 def dilat_conv(x,filter):  
-  shape = x.shape  # Taking an image map -> Downsampling it -> Upsampling it to original shape
+  shape = x.shape
   y1 = AveragePooling2D(pool_size=(shape[1],shape[2]))(x)
   y1 = Conv2D(filter,2,padding='same')(y1)
   y1 = BatchNormalization()(y1)
